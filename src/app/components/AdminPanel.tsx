@@ -10,7 +10,9 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-a977770f`;
+// Verificar se as variáveis de ambiente estão configuradas
+const hasSupabaseConfig = projectId && publicAnonKey;
+const API_BASE_URL = hasSupabaseConfig ? `https://${projectId}.supabase.co/functions/v1/make-server-a977770f` : '';
 
 // Tipos
 interface SiteImage {
@@ -42,6 +44,64 @@ interface AuditLog {
 }
 
 export const AdminPanel = () => {
+  // Se não houver configuração do Supabase, mostrar mensagem de erro
+  if (!hasSupabaseConfig) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 flex items-center justify-center p-6">
+        <Card className="max-w-2xl w-full p-8">
+          <div className="text-center">
+            <AlertCircle className="w-16 h-16 text-amber-500 mx-auto mb-4" />
+            <h1 className="text-2xl font-bold text-neutral-900 mb-4">
+              Configuração Pendente
+            </h1>
+            <div className="text-left bg-amber-50 border border-amber-200 rounded-lg p-6 mb-6">
+              <p className="text-neutral-700 mb-4">
+                As variáveis de ambiente do Supabase não estão configuradas.
+              </p>
+              <p className="font-mono text-sm text-neutral-600 mb-2">
+                VITE_SUPABASE_PROJECT_ID: {projectId || '❌ não configurado'}
+              </p>
+              <p className="font-mono text-sm text-neutral-600">
+                VITE_SUPABASE_ANON_KEY: {publicAnonKey ? '✅ configurado' : '❌ não configurado'}
+              </p>
+            </div>
+            <div className="text-left space-y-4">
+              <h2 className="font-semibold text-neutral-900">📋 Como configurar:</h2>
+              
+              <div className="bg-white border rounded-lg p-4">
+                <h3 className="font-medium mb-2">🏠 Desenvolvimento Local:</h3>
+                <ol className="list-decimal list-inside space-y-2 text-sm text-neutral-600">
+                  <li>Crie um arquivo <code className="bg-neutral-100 px-2 py-1 rounded">.env.local</code> na raiz do projeto</li>
+                  <li>Adicione as variáveis:</li>
+                </ol>
+                <pre className="bg-neutral-900 text-green-400 p-3 rounded mt-2 text-xs overflow-x-auto">
+{`VITE_SUPABASE_PROJECT_ID=seu-project-id
+VITE_SUPABASE_ANON_KEY=sua-anon-key`}
+                </pre>
+                <li className="text-sm text-neutral-600 mt-2">Reinicie o servidor (<code className="bg-neutral-100 px-2 py-1 rounded">npm run dev</code>)</li>
+              </div>
+
+              <div className="bg-white border rounded-lg p-4">
+                <h3 className="font-medium mb-2">🚀 Produção (Netlify):</h3>
+                <ol className="list-decimal list-inside space-y-2 text-sm text-neutral-600">
+                  <li>Acesse: Site settings → Environment variables</li>
+                  <li>Adicione as mesmas variáveis</li>
+                  <li>Faça um novo deploy</li>
+                </ol>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-sm text-blue-800">
+                  📖 Ver guia completo: <strong>NETLIFY_ENV_VARS.md</strong> ou <strong>START_HERE.md</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
