@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Check, Star, ChevronDown, MessageCircle, ArrowRight, Heart, Sparkles, User, Users, ShieldCheck, PlayCircle, BookOpen, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button'; // Assuming standard shadcn button is available or I'll use standard Tailwind
-import swanImage from 'figma:asset/fc99b7de0388ea0351ae08011c002bcdee83f137.png';
-import mirrorImage from 'figma:asset/ae3f040a683fbc4062d462ede696fcf55472e74f.png';
-import pattyImage from 'figma:asset/3d528e21c46966ccec6eeda45acae59d421344b7.png';
-import logoImage from 'figma:asset/44ba26d1252a7c30699f52f2a7a8426bafb93659.png';
+// Replaced figma:asset imports with Unsplash images for deployment
+const swanImage = 'https://images.unsplash.com/photo-1657366076075-662f9a2311fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwc3dhbiUyMHdoaXRlfGVufDF8fHx8MTc2NzIxNzEyN3ww&ixlib=rb-4.1.0&q=80&w=1080';
+const mirrorImage = 'https://images.unsplash.com/photo-1619200307024-a651a941e8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMG1pcnJvciUyMHJlZmxlY3Rpb258ZW58MXx8fHwxNzY3MjE3MTI3fDA&ixlib=rb-4.1.0&q=80&w=1080';
+const pattyImage = 'https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzE1NTM2NHww&ixlib=rb-4.1.0&q=80&w=1080';
 
 // Since I cannot be 100% sure shadcn components are fully set up with the right exports in the provided path without checking, 
 // I will build the page using standard Tailwind and Motion for maximum reliability, using the ShadCN components if I see them in the file list.
@@ -36,11 +36,9 @@ export const SendaDoCisneLP = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-[#1a1512]/95 backdrop-blur-sm border-b border-white/10"
       >
         <div className="container mx-auto px-6 py-4 flex justify-center items-center">
-          <img 
-            src={logoImage} 
-            alt="Patty Domingues" 
-            className="h-8 md:h-10 w-auto"
-          />
+          <div className="text-white text-2xl font-serif tracking-wide">
+            Patty Domingues
+          </div>
         </div>
       </motion.header>
 
