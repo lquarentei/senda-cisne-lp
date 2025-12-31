@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Check, Star, ChevronDown, MessageCircle, ArrowRight, Heart, Sparkles, User, Users, ShieldCheck, PlayCircle, BookOpen, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button'; // Assuming standard shadcn button is available or I'll use standard Tailwind
-// Replaced figma:asset imports with Unsplash images for deployment
-const swanImage = 'https://images.unsplash.com/photo-1657366076075-662f9a2311fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwc3dhbiUyMHdoaXRlfGVufDF8fHx8MTc2NzIxNzEyN3ww&ixlib=rb-4.1.0&q=80&w=1080';
-const mirrorImage = 'https://images.unsplash.com/photo-1619200307024-a651a941e8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMG1pcnJvciUyMHJlZmxlY3Rpb258ZW58MXx8fHwxNzY3MjE3MTI3fDA&ixlib=rb-4.1.0&q=80&w=1080';
-const pattyImage = 'https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzE1NTM2NHww&ixlib=rb-4.1.0&q=80&w=1080';
+// Premium images from Unsplash for deployment
+const swanImage = 'https://images.unsplash.com/photo-1759050184106-9a2eaf1cbfb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2hpdGUlMjBzd2FuJTIwd2F0ZXJ8ZW58MXx8fHwxNzY3MjE4MDI0fDA&ixlib=rb-4.1.0&q=80&w=1080';
+const mirrorImage = 'https://images.unsplash.com/photo-1586376385817-c5adeff82cc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd29tYW4lMjBtaXJyb3IlMjByZWZsZWN0aW9ufGVufDF8fHx8MTc2NzIxODAyNHww&ixlib=rb-4.1.0&q=80&w=1080';
+import pattyImage from 'figma:asset/412ed610ca4088debf716d34084d80b010cdff06.png';
+const communityImage = 'https://images.unsplash.com/photo-1761586449543-edbcad36276e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGNvbW11bml0eSUyMHN1cHBvcnQlMjBjaXJjbGV8ZW58MXx8fHwxNzY3MjE4MDI1fDA&ixlib=rb-4.1.0&q=80&w=1080';
 
 // Since I cannot be 100% sure shadcn components are fully set up with the right exports in the provided path without checking, 
 // I will build the page using standard Tailwind and Motion for maximum reliability, using the ShadCN components if I see them in the file list.
