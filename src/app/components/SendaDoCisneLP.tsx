@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button'; // Assuming standard shadcn but
 // Premium images from Unsplash for deployment
 const swanImage = 'https://images.unsplash.com/photo-1759050184106-9a2eaf1cbfb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2hpdGUlMjBzd2FuJTIwd2F0ZXJ8ZW58MXx8fHwxNzY3MjE4MDI0fDA&ixlib=rb-4.1.0&q=80&w=1080';
 const mirrorImage = 'https://images.unsplash.com/photo-1586376385817-c5adeff82cc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd29tYW4lMjBtaXJyb3IlMjByZWZsZWN0aW9ufGVufDF8fHx8MTc2NzIxODAyNHww&ixlib=rb-4.1.0&q=80&w=1080';
-import pattyImage from 'figma:asset/412ed610ca4088debf716d34084d80b010cdff06.png';
+// Foto da Patty - placeholder até upload no admin
+const pattyImage = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzIxODAyNXww&ixlib=rb-4.1.0&q=80&w=1080';
 const communityImage = 'https://images.unsplash.com/photo-1761586449543-edbcad36276e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGNvbW11bml0eSUyMHN1cHBvcnQlMjBjaXJjbGV8ZW58MXx8fHwxNzY3MjE4MDI1fDA&ixlib=rb-4.1.0&q=80&w=1080';
 
 // Since I cannot be 100% sure shadcn components are fully set up with the right exports in the provided path without checking, 
