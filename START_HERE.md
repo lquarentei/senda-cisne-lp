@@ -57,12 +57,15 @@ Pronto! ✨
 
 ## 🚀 Para Fazer Deploy
 
-Siga o guia completo em: **[DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)**
+**⚡ RECOMENDADO**: Use a integração automática Netlify + Supabase!
 
-Resumo:
-1. Configure variáveis de ambiente no Netlify
-2. Deploy Edge Functions no Supabase
-3. Push para Git → Deploy automático!
+👉 **[NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)** - 2 minutos, zero erros
+
+**Link direto**: https://app.netlify.com/extensions/supabase
+
+---
+
+**Alternativa**: Configuração manual completa em **[DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)**
 
 ---
 

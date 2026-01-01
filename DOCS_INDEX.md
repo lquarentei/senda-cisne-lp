@@ -27,6 +27,7 @@ Todos os guias e documentação do projeto Senda do Cisne organizados por objeti
 
 | Documento | Para quê? | Tempo | Dificuldade |
 |-----------|-----------|-------|-------------|
+| **[NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)** | ⭐ Integração automática (RECOMENDADO) | 2 min | ⭐ |
 | **[DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)** | Deploy completo no Netlify + Supabase | 15 min | ⭐⭐ |
 | **[NETLIFY_ENV_VARS.md](./NETLIFY_ENV_VARS.md)** | Configurar variáveis de ambiente no Netlify | 3 min | ⭐ |
 
@@ -52,8 +53,9 @@ Todos os guias e documentação do projeto Senda do Cisne organizados por objeti
 2. [ADMIN_QUICK_START.md](./ADMIN_QUICK_START.md)
 
 ### 🚀 Colocar no Ar
-1. [DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)
-2. [NETLIFY_ENV_VARS.md](./NETLIFY_ENV_VARS.md)
+1. [NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)
+2. [DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)
+3. [NETLIFY_ENV_VARS.md](./NETLIFY_ENV_VARS.md)
 
 ### 🤓 Entender a Fundo
 1. [README.md](./README.md)

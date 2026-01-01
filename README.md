@@ -121,6 +121,21 @@ supabase functions deploy make-server-a977770f
 
 ### Netlify
 
+**🎯 RECOMENDADO**: Use a integração automática!
+
+👉 **Instale a extensão**: https://app.netlify.com/extensions/supabase
+
+Configura automaticamente:
+- ✅ `VITE_SUPABASE_PROJECT_ID`
+- ✅ `VITE_SUPABASE_ANON_KEY`
+- ✅ Deploy automático
+
+📖 Ver guia completo: [NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)
+
+---
+
+**Alternativa - Configuração Manual:**
+
 1. Configure as variáveis de ambiente:
    - `VITE_SUPABASE_PROJECT_ID`
    - `VITE_SUPABASE_ANON_KEY`
@@ -131,7 +146,7 @@ supabase functions deploy make-server-a977770f
 
 3. Deploy! 🚀
 
-> 📖 Ver guia completo: [DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)
+> 📖 Ver guia manual completo: [DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)
 
 ---
 

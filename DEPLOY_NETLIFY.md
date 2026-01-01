@@ -1,5 +1,27 @@
 # 🚀 Deploy no Netlify - Guia Completo
 
+## ⚡ MÉTODO RECOMENDADO: Integração Automática
+
+**🎯 Use a extensão oficial Supabase + Netlify!**
+
+👉 **[NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)** - Guia completo (2 minutos)
+
+**Link direto**: https://app.netlify.com/extensions/supabase
+
+### Por que usar a integração?
+- ✅ **2 minutos** vs 10 minutos manual
+- ✅ **Zero erros** de configuração
+- ✅ **Automático** - não precisa copiar/colar keys
+- ✅ **Sincronização** - atualiza se mudar no Supabase
+
+---
+
+## 📋 Método Manual (Alternativo)
+
+Se preferir configurar manualmente ou a integração não estiver disponível:
+
+---
+
 ## ✅ Build Local (Teste antes de fazer deploy)
 
 ```bash
