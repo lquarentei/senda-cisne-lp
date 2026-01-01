@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { projectId, publicAnonKey } from '../../utils/supabase/info';
+import { projectId, publicAnonKey, supabaseUrl } from '../../utils/supabase/info';
 import { Upload, Link2, Image, FileImage, LogOut, AlertCircle, Check, X, Eye, EyeOff, Trash2, History, Shield } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
@@ -11,8 +11,8 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 
 // Verificar se as variáveis de ambiente estão configuradas
-const hasSupabaseConfig = projectId && publicAnonKey;
-const API_BASE_URL = hasSupabaseConfig ? `https://${projectId}.supabase.co/functions/v1/make-server-a977770f` : '';
+const hasSupabaseConfig = (supabaseUrl || projectId) && publicAnonKey;
+const API_BASE_URL = hasSupabaseConfig ? `${supabaseUrl || `https://${projectId}.supabase.co`}/functions/v1/make-server-a977770f` : '';
 
 // Tipos
 interface SiteImage {
@@ -58,41 +58,50 @@ export const AdminPanel = () => {
               <p className="text-neutral-700 mb-4">
                 As variáveis de ambiente do Supabase não estão configuradas.
               </p>
-              <p className="font-mono text-sm text-neutral-600 mb-2">
-                VITE_SUPABASE_PROJECT_ID: {projectId || '❌ não configurado'}
-              </p>
-              <p className="font-mono text-sm text-neutral-600">
-                VITE_SUPABASE_ANON_KEY: {publicAnonKey ? '✅ configurado' : '❌ não configurado'}
-              </p>
-            </div>
-            <div className="text-left space-y-4">
-              <h2 className="font-semibold text-neutral-900">📋 Como configurar:</h2>
+              <div className="space-y-1 font-mono text-sm">
+                <p className="text-neutral-600">
+                  <strong>PROJECT_ID:</strong> {projectId || '❌ não configurado'}
+                </p>
+                <p className="text-neutral-600">
+                  <strong>ANON_KEY:</strong> {publicAnonKey ? '✅ configurado' : '❌ não configurado'}
+                </p>
+                <p className="text-neutral-600">
+                  <strong>URL:</strong> {supabaseUrl || '❌ não configurado (derivado do PROJECT_ID)'}
+                </p>
+              </div>
               
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm">
+                <p className="text-blue-900 font-semibold mb-2">⚠️ Problema Identificado:</p>
+                <p className="text-blue-800">
+                  {!projectId && !publicAnonKey && "Nenhuma variável configurada. Configure manualmente ou use a integração Netlify + Supabase."}
+                  {!projectId && publicAnonKey && "A integração configurou ANON_KEY mas não PROJECT_ID. Você precisa adicionar VITE_SUPABASE_PROJECT_ID manualmente!"}
+                  {projectId && !publicAnonKey && "PROJECT_ID encontrado mas ANON_KEY está faltando."}
+                </p>
+              </div>
+
               <div className="bg-white border rounded-lg p-4">
-                <h3 className="font-medium mb-2">🏠 Desenvolvimento Local:</h3>
+                <h3 className="font-medium mb-2">🚀 Solução Rápida (Netlify):</h3>
                 <ol className="list-decimal list-inside space-y-2 text-sm text-neutral-600">
-                  <li>Crie um arquivo <code className="bg-neutral-100 px-2 py-1 rounded">.env.local</code> na raiz do projeto</li>
-                  <li>Adicione as variáveis:</li>
+                  <li>Acesse: <code className="bg-neutral-100 px-1 rounded">Site settings → Environment variables</code></li>
+                  <li>Clique em "Add a variable"</li>
+                  <li>Adicione:</li>
                 </ol>
                 <pre className="bg-neutral-900 text-green-400 p-3 rounded mt-2 text-xs overflow-x-auto">
 {`VITE_SUPABASE_PROJECT_ID=seu-project-id
 VITE_SUPABASE_ANON_KEY=sua-anon-key`}
                 </pre>
-                <li className="text-sm text-neutral-600 mt-2">Reinicie o servidor (<code className="bg-neutral-100 px-2 py-1 rounded">npm run dev</code>)</li>
-              </div>
-
-              <div className="bg-white border rounded-lg p-4">
-                <h3 className="font-medium mb-2">🚀 Produção (Netlify):</h3>
-                <ol className="list-decimal list-inside space-y-2 text-sm text-neutral-600">
-                  <li>Acesse: Site settings → Environment variables</li>
-                  <li>Adicione as mesmas variáveis</li>
-                  <li>Faça um novo deploy</li>
-                </ol>
+                <p className="text-xs text-neutral-500 mt-2">
+                  💡 Onde encontrar: Supabase → Settings → API
+                </p>
+                <li className="text-sm text-neutral-600 mt-2">Salve e faça novo deploy (ou trigger redeploy)</li>
               </div>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-sm text-blue-800">
-                  📖 Ver guia completo: <strong>NETLIFY_ENV_VARS.md</strong> ou <strong>START_HERE.md</strong>
+                  📖 <strong>Guias completos:</strong><br/>
+                  • NETLIFY_SUPABASE_INTEGRATION.md<br/>
+                  • DEBUG_ENV_VARS.md<br/>
+                  • QUICK_DEPLOY.md
                 </p>
               </div>
             </div>
@@ -117,7 +126,7 @@ VITE_SUPABASE_ANON_KEY=sua-anon-key`}
 
   // Supabase client
   const supabase = createClient(
-    `https://${projectId}.supabase.co`,
+    supabaseUrl || `https://${projectId}.supabase.co`,
     publicAnonKey
   );
 
