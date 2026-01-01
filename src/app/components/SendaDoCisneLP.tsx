@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Check, Star, ChevronDown, MessageCircle, ArrowRight, Heart, Sparkles, User, Users, ShieldCheck, PlayCircle, BookOpen, Clock, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button'; // Assuming standard shadcn button is available or I'll use standard Tailwind
-// Premium images from Unsplash for deployment
+import { Button } from '@/components/ui/button';
+import { landingPageConfig, imagens } from '../../config/landing-page';
+
+// ========================================
+// 🎨 LANDING PAGE - SENDA DO CISNE
+// ========================================
+// 
+// 📝 COMO EDITAR:
+// - Links e textos: /src/config/landing-page.ts
+// - Imagens: /public/images/ (e atualizar caminhos em landing-page.ts)
+// 
+// ========================================
+
+// Imagens de fallback (caso as imagens customizadas não existam)
 const swanImage = 'https://images.unsplash.com/photo-1759050184106-9a2eaf1cbfb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2hpdGUlMjBzd2FuJTIwd2F0ZXJ8ZW58MXx8fHwxNzY3MjE4MDI0fDA&ixlib=rb-4.1.0&q=80&w=1080';
 const mirrorImage = 'https://images.unsplash.com/photo-1586376385817-c5adeff82cc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd29tYW4lMjBtaXJyb3IlMjByZWZsZWN0aW9ufGVufDF8fHx8MTc2NzIxODAyNHww&ixlib=rb-4.1.0&q=80&w=1080';
-// Foto da Patty - placeholder até upload no admin
 const pattyImage = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzIxODAyNXww&ixlib=rb-4.1.0&q=80&w=1080';
 const communityImage = 'https://images.unsplash.com/photo-1761586449543-edbcad36276e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGNvbW11bml0eSUyMHN1cHBvcnQlMjBjaXJjbGV8ZW58MXx8fHwxNzY3MjE4MDI1fDA&ixlib=rb-4.1.0&q=80&w=1080';
-
-// Since I cannot be 100% sure shadcn components are fully set up with the right exports in the provided path without checking, 
-// I will build the page using standard Tailwind and Motion for maximum reliability, using the ShadCN components if I see them in the file list.
-// The file list showed @/components/ui/accordion.tsx exists.
 
 import { Button as ShadButton } from "./ui/button";
 
@@ -79,16 +86,18 @@ export const SendaDoCisneLP = () => {
             <ShadButton 
               size="lg" 
               className="bg-rose-100 text-neutral-900 hover:bg-white border-none rounded-none px-8 py-6 text-base tracking-wide transition-all duration-300 min-w-[280px]"
+              onClick={() => window.open(landingPageConfig.links.checkout, '_blank')}
             >
-              Quero entrar na Senda do Cisne
+              {landingPageConfig.textos.ctaPrincipal}
             </ShadButton>
             <ShadButton 
               variant="outline" 
               size="lg" 
               className="bg-transparent border-white text-white hover:bg-white/10 hover:text-white rounded-none px-8 py-6 text-base tracking-wide min-w-[280px]"
+              onClick={() => window.open(landingPageConfig.links.whatsapp, '_blank')}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Falar com a equipe no WhatsApp
+              {landingPageConfig.textos.ctaSecundario}
             </ShadButton>
           </FadeIn>
 
@@ -233,7 +242,7 @@ export const SendaDoCisneLP = () => {
                <p className="text-lg text-neutral-600 mb-8">
                  Um programa estruturado em 12 encontros ao vivo, guiados por pilares que sustentam uma transformação real — consistente, aplicada e duradoura.
                </p>
-               <ShadButton className="bg-neutral-900 text-white hover:bg-neutral-800 rounded-none px-8 py-3">
+               <ShadButton className="bg-neutral-900 text-white hover:bg-neutral-800 rounded-none px-8 py-3" onClick={() => window.open(landingPageConfig.links.checkout, '_blank')}>
                  Quero viver essa jornada
                </ShadButton>
              </FadeIn>
@@ -513,12 +522,14 @@ export const SendaDoCisneLP = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                <ShadButton 
                 className="bg-neutral-900 text-white hover:bg-neutral-700 rounded-none px-8 py-6 text-base w-full sm:w-auto"
+                onClick={() => window.open(landingPageConfig.links.checkout, '_blank')}
                >
                 Entrar na Senda do Cisne
                </ShadButton>
                <ShadButton 
                 variant="outline" 
                 className="bg-white border-neutral-300 text-neutral-900 hover:bg-neutral-50 rounded-none px-8 py-6 text-base w-full sm:w-auto"
+                onClick={() => window.open(landingPageConfig.links.whatsapp, '_blank')}
                >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Falar com a equipe

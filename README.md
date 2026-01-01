@@ -1,152 +1,90 @@
-# 🦢 Senda do Cisne - Landing Page + Admin Panel
+# 🦢 Senda do Cisne - Landing Page
 
-Landing page premium para o programa de mentoria "Senda do Cisne" da Patty Domingues, com painel administrativo completo para gerenciamento de conteúdo.
+> **📚 [Ver Índice Completo da Documentação →](./DOCUMENTACAO.md)**
+
+Landing page premium para o programa **"Senda do Cisne"** de Patty Domingues - Mentoria de Consultoria de Imagem e Estilo.
+
+---
+
+## ✨ Características
+
+- 🎨 **Design Premium**: Rose gold, bege e branco
+- 📱 **Totalmente Responsivo**: Desktop, tablet e mobile
+- ⚡ **Animações Suaves**: Motion (Framer Motion)
+- 🎯 **Copy Otimizado**: Focado em conversão
+- ✏️ **Fácil de Editar**: Sem banco de dados, sem complicação
+- 🚀 **Deploy Rápido**: Pronto para Netlify, Vercel, etc.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Instalação
+### 1. Instalar Dependências
 
 ```bash
 npm install
 ```
 
-### 2. Configurar Variáveis de Ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto:
-
-```env
-VITE_SUPABASE_PROJECT_ID=seu-project-id
-VITE_SUPABASE_ANON_KEY=seu-anon-key
-```
-
-> 📝 Use o `.env.example` como referência
-
-### 3. Rodar Localmente
+### 2. Rodar Localmente
 
 ```bash
 npm run dev
 ```
 
-- **Landing Page**: http://localhost:5173/
-- **Admin Panel**: http://localhost:5173/admin.html
+Acesse: http://localhost:5173/
 
----
-
-## 📦 O que está incluído?
-
-### ✨ Landing Page (`/src/app/components/SendaDoCisneLP.tsx`)
-- Design elegante e premium (branco, bege, rose gold)
-- Copy emocional focado em conversão
-- Seções: Hero, Identificação, Sobre Patty, Pilares, Diferencial, Comunidade, Investimento
-- Totalmente responsiva
-- Animações suaves com Motion (Framer Motion)
-
-### 🔐 Admin Panel (`/src/app/components/AdminPanel.tsx`)
-- Upload e gerenciamento de imagens
-- Edição de links e CTAs
-- Logs de auditoria completos
-- Sistema de autenticação seguro
-- Interface moderna e intuitiva
-
-### ⚙️ Backend (Supabase Edge Functions)
-- 13 endpoints REST
-- Autenticação via JWT
-- Row Level Security (RLS)
-- Validações automáticas
-- Versionamento de imagens
-
----
-
-## 📚 Documentação Completa
-
-| Documento | Descrição |
-|-----------|-----------|
-| **[COMO_TESTAR_AGORA.md](./COMO_TESTAR_AGORA.md)** | Guia passo a passo para testar localmente |
-| **[TESTE_RAPIDO.md](./TESTE_RAPIDO.md)** | 3 comandos para setup ultra rápido |
-| **[DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)** | Instruções de deploy completo |
-| **[ADMIN_MODULE_SETUP.md](./ADMIN_MODULE_SETUP.md)** | Documentação técnica do módulo admin |
-| **[ADMIN_QUICK_START.md](./ADMIN_QUICK_START.md)** | Guia rápido do admin |
-
----
-
-## 🛠️ Stack Tecnológica
-
-- **Frontend**: React 18 + TypeScript + Vite
-- **Styling**: Tailwind CSS v4
-- **Animations**: Motion (Framer Motion)
-- **Backend**: Supabase (PostgreSQL + Edge Functions)
-- **Auth**: Supabase Auth
-- **Storage**: Supabase Storage
-- **Deploy**: Netlify (frontend) + Supabase (backend)
-
----
-
-## 🔧 Setup do Supabase
-
-### 1. Criar Tabelas
-
-Execute o arquivo SQL no Supabase SQL Editor:
+### 3. Build para Produção
 
 ```bash
-# Arquivo: ADMIN_SCHEMA.sql
+npm run build
 ```
 
-### 2. Criar Usuário Admin
+---
 
-1. Supabase → Authentication → Users → Add user
-2. Marque "Auto Confirm User"
-3. Anote o email e senha
+## ✏️ Como Editar
 
-### 3. Autorizar Email
+### 🔗 Editar Links e Textos
 
-Edite `/supabase/functions/server/admin-config.tsx`:
+**Arquivo:** `/src/config/landing-page.ts`
 
 ```typescript
-export const ADMIN_EMAILS = ['seu@email.com'];
+export const landingPageConfig = {
+  // Links dos botões
+  links: {
+    checkout: 'https://pay.hotmart.com/SEU-PRODUTO-AQUI',
+    whatsapp: 'https://wa.me/5511999999999?text=Olá',
+    instagram: 'https://instagram.com/pattydomingues',
+  },
+
+  // Preços
+  preco: {
+    valorCheio: 'R$ 3.997',
+    valorPromocional: 'R$ 1.997',
+    parcelamento: '12x de R$ 197',
+  },
+
+  // Textos principais
+  textos: {
+    heroTitulo: 'Desperte a Mulher que Você Sempre Soube Ser',
+    ctaPrincipal: 'Quero Iniciar Minha Transformação',
+  },
+};
 ```
 
-### 4. Deploy Edge Functions
+### 🖼️ Trocar Imagens
 
-```bash
-supabase login
-supabase link --project-ref seu-project-id
-supabase functions deploy make-server-a977770f
+1. Coloque suas fotos em `/public/images/`
+2. Atualize os caminhos em `/src/config/landing-page.ts`:
+
+```typescript
+export const imagens = {
+  logo: '/images/logo.png',
+  heroPrincipal: '/images/hero-principal.jpg',
+  pattyPerfil: '/images/patty-perfil.jpg',
+};
 ```
 
----
-
-## 🌐 Deploy
-
-### Netlify
-
-**🎯 RECOMENDADO**: Use a integração automática!
-
-👉 **Instale a extensão**: https://app.netlify.com/extensions/supabase
-
-Configura automaticamente:
-- ✅ `VITE_SUPABASE_PROJECT_ID`
-- ✅ `VITE_SUPABASE_ANON_KEY`
-- ✅ Deploy automático
-
-📖 Ver guia completo: [NETLIFY_SUPABASE_INTEGRATION.md](./NETLIFY_SUPABASE_INTEGRATION.md)
-
----
-
-**Alternativa - Configuração Manual:**
-
-1. Configure as variáveis de ambiente:
-   - `VITE_SUPABASE_PROJECT_ID`
-   - `VITE_SUPABASE_ANON_KEY`
-
-2. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-
-3. Deploy! 🚀
-
-> 📖 Ver guia manual completo: [DEPLOY_NETLIFY.md](./DEPLOY_NETLIFY.md)
+**📖 Guia completo:** [COMO_EDITAR.md](./COMO_EDITAR.md)
 
 ---
 
@@ -154,130 +92,133 @@ Configura automaticamente:
 
 ```
 /
-├── src/
-│   ├── app/
-│   │   ├── components/
-│   │   │   ├── SendaDoCisneLP.tsx    # Landing page principal
-│   │   │   ├── AdminPanel.tsx        # Painel administrativo
-│   │   │   └── ui/                   # Componentes UI base
-│   │   └── App.tsx                   # Entry point
-│   ├── utils/
-│   │   └── supabase/
-│   │       └── info.ts               # Config Supabase
-│   └── styles/
-│       └── theme.css                 # Tema Tailwind
-├── supabase/
-│   └── functions/
-│       └── server/                   # Edge Functions
-│           ├── index.ts              # API endpoints
-│           ├── admin-config.tsx      # Configurações admin
-│           └── types.ts              # TypeScript types
 ├── public/
-│   └── admin.html                    # Página de admin
-├── ADMIN_SCHEMA.sql                  # Schema do banco
-└── package.json
+│   └── images/              ← 🖼️ Suas imagens aqui
+│       ├── logo.png
+│       ├── hero-principal.jpg
+│       └── patty-perfil.jpg
+├── src/
+│   ├── config/
+│   │   └── landing-page.ts  ← ⭐ Editar links, textos, preços
+│   ├── app/
+│   │   ├── App.tsx
+│   │   └── components/
+│   │       ├── SendaDoCisneLP.tsx
+│   │       └── ui/          ← Componentes shadcn/ui
+│   └── styles/
+│       └── theme.css        ← Tema Tailwind
+├── COMO_EDITAR.md           ← 📖 Guia detalhado
+└── README.md                ← Você está aqui
 ```
 
 ---
 
-## 🎯 Como Usar o Admin Panel
+## 🌐 Deploy
 
-### 1. Login
-```
-URL: /admin.html
-Credenciais: configuradas no Supabase Auth
-```
+### Netlify (Recomendado)
 
-### 2. Upload de Imagens
-- Escolha o tipo (Hero, Logo, Section, etc)
-- Selecione arquivo (validação automática)
-- Preview em tempo real
-- Envio seguro para Supabase Storage
+1. Conecte seu repositório GitHub ao Netlify
+2. Configure:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+3. Deploy automático! 🎉
 
-### 3. Gerenciar Links
-- Edite URLs dos CTAs
-- Altere textos dos botões
-- Ative/desative links
-- Histórico completo nos logs
+**Não precisa de variáveis de ambiente.**
 
-### 4. Ver Logs
-- Todas as ações são registradas
-- Filtro por tipo de ação
-- Data/hora precisa
-- Identificação do usuário
-
----
-
-## 🔒 Segurança
-
-- ✅ Autenticação JWT obrigatória
-- ✅ Row Level Security (RLS) no Supabase
-- ✅ Validação de tipos de arquivo
-- ✅ Limite de tamanho por tipo de imagem
-- ✅ Sanitização de inputs
-- ✅ Lista de emails autorizados
-- ✅ Logs de auditoria completos
-
----
-
-## 🐛 Troubleshooting
-
-### Build falhando?
-```bash
-# Limpe cache e reinstale
-rm -rf node_modules dist
-npm install
-npm run build
-```
-
-### Admin não funciona?
-1. ✅ Variáveis de ambiente configuradas?
-2. ✅ SQL Schema executado?
-3. ✅ Edge Functions deployadas?
-4. ✅ Email autorizado em `admin-config.tsx`?
-
-### Upload de imagem falha?
-- Verifique tamanho (Hero: 5MB, Logo: 1MB, etc)
-- Formato aceito (PNG, JPG, JPEG, WebP)
-- Conexão com Supabase Storage OK?
-
----
-
-## 📝 Comandos Úteis
+### Vercel
 
 ```bash
-# Desenvolvimento
-npm run dev
-
-# Build de produção
-npm run build
-
-# Preview do build
-npm run preview
-
-# Deploy Supabase Functions
-supabase functions deploy make-server-a977770f
-
-# Ver logs das functions
-supabase functions logs make-server-a977770f
+npm install -g vercel
+vercel
 ```
+
+### Outros
+
+Build estático em `/dist` - funciona em qualquer host.
 
 ---
 
-## 🎨 Customização
+## 🛠️ Stack Tecnológica
+
+- **React 18** + TypeScript
+- **Vite** (build tool)
+- **Tailwind CSS v4** (styling)
+- **Motion** (animações)
+- **shadcn/ui** (componentes)
+
+---
+
+## 📝 Seções da Landing Page
+
+1. **Hero** - Título impactante + CTA principal
+2. **Identificação** - Dores e desejos do público
+3. **Quem é Patty** - Credibilidade e autoridade
+4. **Pilares do Programa** - Metodologia em 6 pilares
+5. **Diferencial** - O que torna único
+6. **Comunidade** - Prova social
+7. **Investimento** - Preço e condições
+8. **CTA Final** - Chamada para ação
+
+---
+
+## 🎨 Personalização
 
 ### Cores
+
 Edite `/src/styles/theme.css`:
+
 ```css
---color-primary: #your-color;
---color-accent: #your-accent;
+:root {
+  --color-primary: #C8A882; /* Rose gold */
+  --color-secondary: #FDFBF7; /* Bege */
+}
 ```
 
 ### Fontes
-Importe em `/src/styles/fonts.css`
 
-### Textos
-Edite diretamente em `SendaDoCisneLP.tsx`
+Importe em `/src/styles/fonts.css` (Google Fonts, etc.)
+
+### Textos Longos
+
+Edite diretamente em `/src/app/components/SendaDoCisneLP.tsx`
+
+---
+
+## 📖 Documentação
+
+| Arquivo | Descrição |
+|---------|-----------|
+| [COMO_EDITAR.md](./COMO_EDITAR.md) | Guia completo de edição |
+| [README_SIMPLES.md](./README_SIMPLES.md) | Versão resumida |
+
+---
+
+## ✅ Checklist Antes do Deploy
+
+- [ ] Links dos botões configurados
+- [ ] Número do WhatsApp atualizado
+- [ ] Preços atualizados
+- [ ] Logo adicionada
+- [ ] Imagens principais adicionadas
+- [ ] Depoimentos editados
+- [ ] Testado localmente (`npm run dev`)
+- [ ] Build sem erros (`npm run build`)
+
+---
+
+## 🆘 Precisa de Ajuda?
+
+**Imagem não aparece?**
+- Verifique se está em `/public/images/` (não `/src/images/`)
+- Caminho começa com `/images/` (com a barra)
+- Nome do arquivo bate exatamente
+
+**Link não funciona?**
+- Link completo com `https://`
+- Salve o arquivo `/src/config/landing-page.ts`
+- Recarregue a página
+
+**Mais ajuda:** Ver [COMO_EDITAR.md](./COMO_EDITAR.md)
 
 ---
 
@@ -287,16 +228,4 @@ Propriedade de Patty Domingues. Todos os direitos reservados.
 
 ---
 
-## 🆘 Suporte
-
-Para dúvidas ou problemas:
-1. Consulte a documentação em `/docs`
-2. Verifique os guias de troubleshooting
-3. Revise os logs do Supabase
-
----
-
 **Desenvolvido com 🤍 para o programa Senda do Cisne**
-
-Versão: 1.0.0  
-Última atualização: Dezembro 2025
